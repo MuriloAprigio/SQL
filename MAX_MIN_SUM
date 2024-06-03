@@ -1,0 +1,6 @@
+Select mes, MAX(faturamento_bruto) fROM faturamento; -- Seleciona o Mes em que ocorreu o maior Faturamento
+
+SELECT mes, MIN(faturamento_bruto) FROM  faturamento -- Seleciona o Mes em que ocorreu o menor faturament
+
+Select SUM(numero_novos_clientes) AS 'soma_novos_clientes' From faturamento --Esta somando a quantidade de novos clientes apenas do ano de 2023
+where mes '%2023%';-- Filtra por apenas ano 2023
