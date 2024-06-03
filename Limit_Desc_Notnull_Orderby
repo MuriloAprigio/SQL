@@ -1,0 +1,5 @@
+SELECT * from HistoricoEmprego
+--WHERE datatermino ISNULL -- Seleciona apenas quem tem data termino = NULL
+WHERE datatermino NOTNULL-- Seleciona apenas quem tem data termo preenchida
+order by salario desc -- esta ordenando do maior salario para o menor
+LIMIT 5; -- traz apenas os 5 maiores registros
