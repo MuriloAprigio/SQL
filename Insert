@@ -1,0 +1,12 @@
+insert Into tabelaclientes --Insere dados na tabela cliente, no parenteses seleciona as colunas que serão adicionadas. Depois passa os valores na ordem em que as colunas foram especificadas
+(id_cliente,
+ nome_cliente,
+ informacoes_de_contato,
+ endereco_cliente)
+ values 
+ ('1', 
+  'Ana Silva',
+  'Ana.Silva@email.com',
+  'Rua flores casa - 1');
+   
+  Select * from tabelaclientes; -- Seleciona todas as colunas da tabela clientes
