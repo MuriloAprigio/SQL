@@ -1,0 +1,1 @@
+alter table tabelaclientes add endereco_cliente varchar (250);
