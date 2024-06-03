@@ -1,0 +1,3 @@
+Select * from tabelafornecedores where país_de_origem = 'China'; -- Seleciona tudo da tabelafornecedores onde o país de origem tem nome Chinademo
+
+Select Distinct cliente FROM tabelapedidos; -- Seleciona apenas os clientes da tabelapedidos
