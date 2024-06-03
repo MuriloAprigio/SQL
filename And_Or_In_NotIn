@@ -1,0 +1,11 @@
+SELECT * FROM HistoricoEmprego
+WHERE cargo = 'Professor' AND datatermino NOTNULL; -- Seleciona todos os professores que estão desempregado (data termino preenchida)
+
+SELECT * FROM HistoricoEmprego
+WHERE cargo = 'Oftalmologista' OR cargo = 'Dermatologista'; -- Está filtrando ou Oftmaologista ou Dermatologista
+
+Select * from HistoricoEmprego
+where cargo IN ('Oftalmologista', 'Dermatologista', 'Professor'); -- Com o IN consegue especificar mais de uma profissão que você quer selecionar de uma vezColaboradores
+
+Select * from HistoricoEmprego
+where cargo	not IN ('Oftalmologista', 'Dermatologista', 'Professor');-- seleciona todos os cargos menos oftalmologista, professor e dermatologista
