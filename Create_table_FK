@@ -1,0 +1,13 @@
+create table tabelaprodutos (
+  ID_Produto int PRIMARY key,
+  Nome_Produto varchar (250),
+  Descricao_Produto TEXT,
+  Categoria_Produto int,
+  Preco_de_compra DECIMAL(10,2),
+  Unidade varchar (50),
+  Fornecedor int,
+  Data_de_inclusao date,
+  FOREIGN key (Categoria_Produto) REFERENCES tabelacategorias (ID_categoria),
+  FOREIGN KEY (Fornecedor) REFERENCES tabelafornecedores (id)
+  );
+  
