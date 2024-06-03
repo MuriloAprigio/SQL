@@ -1,0 +1,8 @@
+UPDATE tabelapedidos SET status = 'Enviado' WHERE status = 'Processando'; -- Muda o Status de pedido de 'Processando' para 'Enviado'
+
+Select * FRom tabelapedidos WHERE status ='Enviado' ; --Seleciona apenas os pedidos com status enviado TESTE
+
+UPDATE tabelaclientes set informacoes_de_contato = 'J.Silva@email.com' , endereco_cliente = 'Rua corinthians fica cassio,12' -- muda informação de contato e endereço do cliente com ID =2
+WHERE id_cliente = 2;
+
+SELECT *FROM tabelaclientes where id_cliente = 2; -- TESTE
