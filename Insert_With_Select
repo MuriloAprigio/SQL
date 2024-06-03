@@ -1,0 +1,19 @@
+INSERT INTO tabelapedidosgold (
+  id_pedido_gold,
+  data_do_pedido_gold,
+  status_gold,
+  total_do_pedido_gold,
+  cliente_gold,
+  data_de_envio_estimada_gold)
+  SELECT                             -- Estamos inserindo na tabela gold através da tabela pedido, com o comando select
+  id,
+  data_do_pedido,
+  status,
+  total_do_pedido,
+  cliente,
+  data_de_envio_estimada
+  FROM tabelapedidos
+  WHERE total_do_pedido >= 400; -- Filtro que diz que só irá inserir na tabela gold quanto o total do pedido for MAIOR ou IGUAL a 400 reais
+  
+  Select * from tabelapedidosgold; -- TESTE
+  
