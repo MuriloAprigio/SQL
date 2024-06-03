@@ -4,5 +4,8 @@ Create TABLE tabelaclientes (
   Informacoes_de_contato VARCHAR (250)
   );
   
-  
-  
+create table tabelacategorias(
+  ID_Categoria int primary KEY,
+  Nome_Categoria varchar(250),
+  Descricao_Categoria text
+  );
