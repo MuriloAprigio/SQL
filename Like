@@ -1,0 +1,12 @@
+SELECT * FROM Treinamento
+WHERE curso LIKE 'O poder%'; --  Vai filtrar da tabela treinamento da coluna curso
+                               --onde contem um curso com nome O poder e podendo ter mais informações depois de 'O Poder' 
+                               --Representamos isso atraves da %
+                               
+WHERE curso LIKE '%realizar%'; --Busca a palavra realizar podendo conter trecho de texto antes e depois 
+								-- Representado com % antes e depois da palavra que eu quero filtrar que no caso é realizar
+                                
+                                
+                                
+Select * FROM Colaboradores
+WHere nome Like 'Isadora%'; --  Sabemos que existe uma funcionaria com nome Isadora mas não sabemos o restante do nome, então colocamos % depois de isadora
