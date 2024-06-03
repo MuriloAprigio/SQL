@@ -1,0 +1,3 @@
+SELECT * FROM Treinamento
+WHERE (curso LIKE 'O direito%' AND instituicao = 'da Rocha')  -- Tras o curso com o nome que começa com o direito e é da instituição da rocha
+OR (curso LIKE 'O conforto%' and instituicao = 'das Neves'); -- Ou traz o curso que começa com O conforto e é da instituição das Neves
