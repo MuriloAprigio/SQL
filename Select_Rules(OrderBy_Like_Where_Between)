@@ -1,0 +1,19 @@
+SELECT * FROM tabelapedidos WHERE total_do_pedido >= 200; -- Filtra todos os valores de pedidos acima de 200 reais ou iguais
+                                                           -- <> diferente
+SELECT * FROM tabelaclientes WHERE nome_cliente > 'C' ;     -- Cliente com 'A' e 'b' não são exibidos pois está filtrando nomes que começam a partir da letra C no alfabeto
+
+Select * from tabelapedidos where data_do_pedido > '2023-09-19'; -- Filtra quais pedidos foram feitos depois da data 19/09/2023
+
+SELECT * FROM tabelaprodutos WHERE nome_produto LIKE 'Smartwatch'; -- Filtra apenas os produtos com o nome Smartwatch
+
+SELECT * FROM tabelapedidos WHERE total_do_pedido >= 200 and status = 'Pendente'; -- Pega todos pedidos com os valores acima de 200 e que estão pendente
+
+SELECT * FROM tabelapedidos WHERE status = 'Pendente' or status = 'Processando'; -- Pega todos os pedidos que o status esteja pendente OU processando 
+
+SELECT * FROM tabelapedidos WHERE NOT status = 'Pendente'; -- Pega todos os pedidos que NÃO tem status como pendente 
+
+Select * from tabelapedidos Where data_de_envio_estimada between '2023-08-01' AND '2023-09-01'; -- Pega todos as estimativas de datas de envio do MÊS de agosto
+
+SELECT * from tabelaprodutos WHERE preco_de_compra BETWEEN 200 and 600 order by nome_produto; -- Filtra o preço de compra dos produto que estão entre 200 e 600 e ORDENA na consulta por ordem alfabética
+
+SELECT * from tabelaprodutos WHERE preco_de_compra BETWEEN 200 and 600 order by fornecedor DESC; -- Está filtrando os ID'S dos fornecedores por ordem DECRESCENTE
