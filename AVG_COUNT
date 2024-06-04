@@ -1,0 +1,8 @@
+Select AVG(despesas) FROM FATURAMENTO; -- Faz a media de todas as despesas que a empresa já teve (average)
+
+SELECT COUNT (*) FROM historico_emprego  -- Faz uma contagem do numero de empregados que tem a data termino que não é nulla, ou seja, de empregados que já trabalharam na empresa e não trabalham mais
+WHERE data_termino NOT NULL; -- A mesma coissa que perguntar: Quantos funcionarios trabalharamm aqui e não trabalham mais?
+
+
+SELECT COUNT (*) FROM licensas
+Where tipo_licensa = 'Ferias'; -- Faz a contagem de quantos funcionarios estão de licensa por ferias
