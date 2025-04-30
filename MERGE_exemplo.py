@@ -1,12 +1,12 @@
 # Databricks notebook source
-# MAGIC %run /Repos/lakehouse/ProjetoLakehouse/0_feature/nb_globais_definicoes
+# MAGIC %run /Repos/lakehouse/ProjetoLakehouse/0_feature/PATH_EXEMPLO
 
 # COMMAND ----------
 
 # DBTITLE 1,Definição de Variáveis
 sistema_origem = 'EXEMPLO'
-#uc_lakehouse = valor pré definido no notebook /Workspace/0_feature/nb_globais_definicoes
-#uc_ingestao = valor pré definido no notebook /Workspace/0_feature/nb_globais_definicoes 
+#uc_lakehouse = valor pré definido no notebook /Workspace/0_feature/PATH_EXEMPLO
+#uc_ingestao = valor pré definido no notebook /Workspace/0_feature/PATH_EXEMPLO
 
 # COMMAND ----------
 
