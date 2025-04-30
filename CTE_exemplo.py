@@ -1,12 +1,12 @@
 # Databricks notebook source
 # MAGIC %run 
-# MAGIC /Repos/lakehouse/ProjetoLakehouse/0_feature/nb_globais_definicoes
+# MAGIC /Repos/lakehouse/ProjetoLakehouse/0_feature/PATH_EXEMPLO
 
 # COMMAND ----------
 
 # MAGIC %run 
 # MAGIC
-# MAGIC /Repos/lakehouse/ProjetoLakehouse/0_feature/nb_globais_funcoes
+# MAGIC /Repos/lakehouse/ProjetoLakehouse/0_feature/PATH_EXEMPLO
 
 # COMMAND ----------
 
