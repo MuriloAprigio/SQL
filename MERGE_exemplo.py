@@ -4,7 +4,7 @@
 # COMMAND ----------
 
 # DBTITLE 1,Definição de Variáveis
-sistema_origem = 'DATASIGH_IRV'
+sistema_origem = 'EXEMPLO'
 #uc_lakehouse = valor pré definido no notebook /Workspace/0_feature/nb_globais_definicoes
 #uc_ingestao = valor pré definido no notebook /Workspace/0_feature/nb_globais_definicoes 
 
@@ -13,7 +13,7 @@ sistema_origem = 'DATASIGH_IRV'
 # DBTITLE 1,Capturando data carga delta
 df_data_delta = spark.sql(f"""
                           SELECT NVL(MAX(DAT_CARGA),'1900-01-01') AS DAT_DELTA
-                          FROM `{uc_lakehouse}`.`2_tru_emr`.tbl_tru_produto
+                          FROM `{CATALOGO_EXEMPLO}`.`SCHEMA_EXEMPLO`.tbl_produto
                           WHERE ORIGEM = '{sistema_origem}'
                         """)
 df_data_delta.createOrReplaceTempView("vw_temp_data_delta")
@@ -35,8 +35,8 @@ df_data_delta.createOrReplaceTempView("vw_temp_data_delta")
 # MAGIC                     CAST(PROCED.DT_CARGA AS DATE) DESC
 # MAGIC                 ) AS RN
 # MAGIC                 FROM
-# MAGIC                 `3_prd_ingestao`.`1_raw_datasigh_irv`.servicos PROCED
-# MAGIC                 LEFT JOIN `3_prd_ingestao`.`1_raw_datasigh_irv`.servxlanc TUS ON PROCED.CD_SERVICO = TUS.CD_SERVICO
+# MAGIC                 `CATALOG_EXEMPLO`.`SCHEMA_EXEMPLO`.TBL_servicos PROCED
+# MAGIC                 LEFT JOIN `CATALOG_EXEMPLO`.`SCHEMA_EXEMPLO`.TBL_servicos_2 TUS ON PROCED.CD_SERVICO = TUS.CD_SERVICO
 # MAGIC             ) A
 # MAGIC             WHERE
 # MAGIC             DS_CODIGO IS NOT NULL
@@ -60,8 +60,8 @@ df_tmp_tru_cod_tuss = spark.sql(f"""
                     CAST(PROCED.DT_CARGA AS DATE) DESC
                 ) AS RN
                 FROM
-                `{uc_ingestao}`.`1_raw_datasigh_irv`.servicos PROCED
-                LEFT JOIN `{uc_ingestao}`.`1_raw_datasigh_irv`.servxlanc TUS ON UPPER(TRIM(PROCED.CD_SERVICO)) = UPPER(TRIM(TUS.CD_SERVICO))
+                `CATALOG_EXEMPLO`.`SCHEMA_EXEMPLO`.TBL_servicos PROCED
+                LEFT JOIN `{CATALOGO_EXEMPLO}`.`SCHEMA_EXEMPLO`.TBL_servicos_2 TUS ON UPPER(TRIM(PROCED.CD_SERVICO)) = UPPER(TRIM(TUS.CD_SERVICO))
             ) A
             WHERE
             DS_CODIGO IS NOT NULL
@@ -121,7 +121,7 @@ df_tmp_tru_produto = spark.sql(f"""
                             ROW_NUMBER() OVER (
                                 PARTITION BY TRIM(CAST(PROCED.CD_SERVICO AS STRING)), '{sistema_origem}' 
                                 ORDER BY CAST(PROCED.DT_CARGA AS DATE) DESC)                    AS RN
-                    FROM `{uc_ingestao}`.`1_raw_datasigh_irv`.servicos PROCED
+                    FROM `CATALOG_EXEMPLO`.`SCHEMA_EXEMPLO`.TBL_servicos PROCED
                     LEFT JOIN vw_tmp_tru_cod_tuss AS T 
                         ON TRIM(PROCED.CD_SERVICO) = TRIM(T.CD_SERVICO)
             )A
@@ -133,7 +133,7 @@ df_tmp_tru_produto.createOrReplaceTempView("vw_tmp_tru_produto")
 # COMMAND ----------
 
 sql_merge = f"""
-            MERGE INTO `{uc_lakehouse}`.`2_tru_emr`.tbl_tru_produto tgt
+            MERGE INTO `{CATALOG_EXEMPLO}`.`SCHEMA_EXEMPLO`.tbl_produto tgt
             USING vw_tmp_tru_produto src
             ON tgt.COD_PRODUTO = src.COD_PRODUTO
             AND tgt.ORIGEM = src.ORIGEM
