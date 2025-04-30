@@ -12,7 +12,7 @@
 
 # DBTITLE 1,CRIAÇÃO DDL
 # MAGIC %sql
-# MAGIC CREATE TABLE IF NOT EXISTS `3_prd_sandbox`.`engenharia_dados`.dim_produto
+# MAGIC CREATE TABLE IF NOT EXISTS `catolog_exemplo`.`schema_exemplo`.tbl_exemplo
 # MAGIC (
 # MAGIC   	SK_PRODUTO                      	  string, 
 # MAGIC 	PK_PRODUTO                      	  string,                    	
@@ -79,7 +79,7 @@ SELECT
     END AS STRING) AS DSC_PRINCIPIO_ATIVO,
     A.ORIGEM AS DSC_SISTEMA_ORIGEM,
     DATEADD(HOUR, -3, current_timestamp()) AS DAT_CARGA			
-FROM `3_prd_sandbox`.engenharia_dados.tbl_tru_pe_produto A
+FROM `catolog_exemplo`.`schema_exemplo`.tbl_produto A
 LEFT JOIN (
     SELECT
         CAST(RIGHT('000000' + COD_PROTHEUS, 6) AS STRING) AS COD_PROTHEUS,
@@ -89,7 +89,7 @@ LEFT JOIN (
         MAX(GRP_CLASSE_TERAPEUTICA) AS GRP_CLASSE_TERAPEUTICA,
         MAX(SUBSTANCIA) AS SUBSTANCIA,
         MAX(PRODUTO) AS PRODUTO
-    FROM `{uc_ingestao}`.`1_raw_sharepoint`.lista_medicamentos
+    FROM `{uc_ingestao}`.`1_raw_sharepoint`.tbl_medicamentos
     WHERE COD_PROTHEUS IS NOT NULL
     GROUP BY COD_PROTHEUS
 ) AS VIA
@@ -104,7 +104,7 @@ df_produto_final.createOrReplaceTempView("vw_produto_final")
 
 # DBTITLE 1,DELETE
 sql_delete = f"""
-DELETE FROM `3_prd_sandbox`.`engenharia_dados`.dim_produto
+DELETE FROM `catolog_exemplo`.`schema_exemplo`.tbl_exemplo
 """
 df_insert = spark.sql(sql_insert)
 
@@ -112,7 +112,7 @@ df_insert = spark.sql(sql_insert)
 
 # DBTITLE 1,INSERT
 sql_insert = f"""
-INSERT INTO `3_prd_sandbox`.`engenharia_dados`.dim_produto
+INSERT INTO `catolog_exemplo`.`schema_exemplo`.tbl_exemplo
 SELECT 			
  SK_PRODUTO		
 ,PK_PRODUTO		
